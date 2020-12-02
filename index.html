@@ -6,6 +6,9 @@
   <title>Vue Sandbox</title>
   <script src="https://unpkg.com/vue@3.0.2"></script>
   <style>
+    body {
+      font-family: Helvetica;
+    }
     .box {
       padding: 2rem;
       width: 10rem;
@@ -20,25 +23,37 @@
       background: darkgoldenrod;
       color: white;
     }
+
+    ul li {
+      margin-bottom: 1rem;
+    }
+
+    ul li h4,
+    ul li p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   </style>
 </head>
 <body>
-
   <h1>Vue Sandbox</h1>
-
   <div id="app">
-
-    <div v-if="showBooks">
-      <p>{{title}} - {{author}} - {{age}}</p>
-    </div>
 
     <button @click="toggleShowBooks">
       <span v-if='showBooks'>Hide Books</span>
       <span v-else>Show Books</span>
     </button>
 
-    <hr>
+    <div v-if="showBooks">
+      <ul>
+        <li v-for="book in books">
+          <h4>{{ book.title }}</h4>
+          <p>{{ book.author }}</p>
+        </li>
+      </ul>
+    </div>
 
+    <hr>
     <!-- mouse events -->
     <div class="box" @mouseover="handleEvent($event, 5)">mouseover</div>
     <div class="box" @mouseleave="handleEvent">mouseleave</div>

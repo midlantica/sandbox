@@ -2,9 +2,11 @@ const app = Vue.createApp({
   data() {
     return {
       showBooks: true,
-      title: 'The Final Empire',
-      author: 'Drew Harper',
-      age: 45,
+      books: [
+        { title: 'Name of the Wind', author: 'Fred Johnson' },
+        { title: 'The Way of Kings', author: 'Mildred Honeycutt' },
+        { title: 'The Final Empire', author: 'Mac Wilson' },
+      ],
       x: 0,
       y: 0,
     };
@@ -27,4 +29,3 @@ const app = Vue.createApp({
 });
 
 app.mount('#app');
-console.log(object);
