@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Sandbox</title>
+  <script src="https://unpkg.com/vue@3.0.2"></script>
+  <style>
+    .box {
+      padding: 2rem;
+      width: 10rem;
+      text-align: center;
+      background: gold;
+      margin: 1rem;
+      display: inline-block;
+      cursor: pointer;
+      border-radius: .5rem;
+    }
+    .box:hover {
+      background: darkgoldenrod;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Vue Sandbox</h1>
+
+  <div id="app">
+
+    <div v-if="showBooks">
+      <p>{{title}} - {{author}} - {{age}}</p>
+    </div>
+
+    <button @click="toggleShowBooks">
+      <span v-if='showBooks'>Hide Books</span>
+      <span v-else>Show Books</span>
+    </button>
+
+    <hr>
+
+    <!-- mouse events -->
+    <div class="box" @mouseover="handleEvent($event, 5)">mouseover</div>
+    <div class="box" @mouseleave="handleEvent">mouseleave</div>
+    <div class="box" @dblclick="handleEvent">doubleclick</div>
+    <div class="box" @mousemove="handleMouseMove">mousemove - {{x}}, {{y}}</div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
