@@ -5,48 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vue Sandbox</title>
   <script src="https://unpkg.com/vue@3.0.2"></script>
-  <style>
-    body {
-      font-family: Helvetica;
-    }
-    .box {
-      padding: 2rem;
-      width: 10rem;
-      text-align: center;
-      background: gold;
-      margin: 1rem;
-      display: inline-block;
-      cursor: pointer;
-      border-radius: .5rem;
-    }
-    .box:hover {
-      background: darkgoldenrod;
-      color: white;
-    }
-
-    ul li {
-      margin-bottom: 1rem;
-    }
-
-    ul li h4,
-    ul li p {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Vue Sandbox</h1>
   <div id="app">
 
-    <button @click="toggleShowBooks">
-      <span v-if='showBooks'>Hide Books</span>
-      <span v-else>Show Books</span>
-    </button>
+    <a :href="url">Great UX Design</a>
+    <br>
+    <hr>
+
+    <div @click="toggleShowBooks">
+      <button v-if='showBooks'>Hide Books</button>
+      <button v-else>Show Books</button>
+    </div>
 
     <div v-if="showBooks">
       <ul>
-        <li v-for="book in books">
+        <li v-for="book in filteredBooks" :class="{fav: book.isFav}" @click="toggleIsFav(book)">
+          <img :src="book.img" :alt="book.title">
+          <h4>{{ book.title }}</h4>
+          <p>{{ book.author }}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <ul>
+        <li v-for="book in books" :class="{fav: book.isFav}" @click="toggleIsFav(book)">
+          <img :src="book.img" :alt="book.title">
           <h4>{{ book.title }}</h4>
           <p>{{ book.author }}</p>
         </li>
